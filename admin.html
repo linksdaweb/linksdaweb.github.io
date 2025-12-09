@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Login ADM</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="login-caixa">
+  <h2>Login ADM</h2>
+  
+  <input type="text" id="usuario" placeholder="Usuário">
+  <input type="password" id="senha" placeholder="Senha">
+  
+  <button onclick="logar()">Entrar</button>
+
+  <p id="erro"></p>
+</div>
+
+<script>
+function logar() {
+  let user = document.getElementById("usuario").value;
+  let pass = document.getElementById("senha").value;
+
+  if (user === "dvzk300112233" && pass === "0352011ivad") {
+    window.location.href = "painel.html"; // futura tela do adm
+  } else {
+    document.getElementById("erro").innerText = "Dados incorretos!";
+  }
+}
+</script>
+
+</body>
+</html>
