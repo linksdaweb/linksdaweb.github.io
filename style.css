@@ -1,0 +1,24 @@
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#111; color:#eee; font-family:Arial; text-align:center; padding:20px; }
+
+header h1 { font-size:2.5rem; margin-bottom:10px; }
+header p { color:#aaa; }
+
+#links { margin-top:40px; display:flex; flex-direction:column; gap:15px; align-items:center; }
+
+.btn {
+    background:#222;
+    color:#fff;
+    padding:15px 20px;
+    border-radius:10px;
+    text-decoration:none;
+    border:2px solid #444;
+    width:90%;
+    max-width:350px;
+    transition:0.3s;
+}
+.btn:hover {
+    background:#333;
+    transform:scale(1.05);
+}
+footer { margin-top:50px; color:#777; }
