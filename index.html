@@ -2,143 +2,57 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dvzk3</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: #2b0040;
-      font-family: Arial, sans-serif;
-      color: #fff;
-      text-align: center;
-    }
-
-    header {
-      padding: 40px 0;
-    }
-
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-    }
-
-    .marca {
-      font-size: 1.2rem;
-      opacity: 0.8;
-    }
-
-    /* Fantasminha original customizado (não Pac‑Man) */
-    .ghost {
-      width: 120px;
-      height: 140px;
-      background: #a64aff;
-      margin: 40px auto;
-      border-radius: 60px 60px 20px 20px;
-      position: relative;
-      box-shadow: 0 0 20px #c084ff;
-    }
-    .ghost::before, .ghost::after {
-      content: "";
-      position: absolute;
-      top: 40px;
-      width: 30px;
-      height: 40px;
-      background: #fff;
-      border-radius: 50%;
-    }
-    .ghost::before {
-      left: 20px;
-    }
-    .ghost::after {
-      right: 20px;
-    }
-    .ghost .pupil {
-      position: absolute;
-      top: 55px;
-      width: 10px;
-      height: 15px;
-      background: #000;
-      border-radius: 50%;
-    }
-    .ghost .p1 { left: 30px; }
-    .ghost .p2 { right: 30px; }
-
-    footer {
-      margin-top: 60px;
-      padding: 20px 0;
-      opacity: 0.6;
-      font-size: 0.9rem;
-    }
-  </style>
+  <title>Links da Web</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header>
-  <div id="menu-btn" onclick="toggleMenu()" style="position:absolute; left:20px; top:20px; font-size:2rem; cursor:pointer;">☰</div>
-    <h1>Dvzk3</h1>
-    <div class="marca">Todos os direitos reservados © 2025</div>
-  </header>
+<header>
+  <h1>Links da Web 👻</h1>
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+</header>
 
-  <div class="ghost">
-    <div class="pupil p1"></div>
-    <div class="pupil p2"></div>
-  </div>
-
-  <footer>
-    Criado por Dvzk3
-    <section id="links" style="margin-top:40px;">
-    <h2 style="font-size:2rem; margin-bottom:20px;">Links da Web</h2>
-    <div style="max-width:600px; margin:0 auto; display:flex; flex-direction:column; gap:15px;">
-      <a href="#" style="background:#5f0aff; padding:15px; border-radius:12px; text-decoration:none; color:white; font-size:1.2rem; box-shadow:0 0 10px #7d3bff;">Exemplo de Link 1</a>
-      <a href="#" style="background:#5f0aff; padding:15px; border-radius:12px; text-decoration:none; color:white; font-size:1.2rem; box-shadow:0 0 10px #7d3bff;">Exemplo de Link 2</a>
-      <a href="#" style="background:#5f0aff; padding:15px; border-radius:12px; text-decoration:none; color:white; font-size:1.2rem; box-shadow:0 0 10px #7d3bff;">Exemplo de Link 3</a>
-    </div>
-  </section>
-
-
-
-<!-- SISTEMA DE LOGIN -->
-
-
-
-
-<script>
-  function login() {
-    const u = document.getElementById('user').value;
-    const p = document.getElementById('pass').value;
-
-    if (u === "dvzk3" && p === "1234") {
-      document.getElementById('login-area').style.display = 'none';
-      document.getElementById('painel-admin').style.display = 'block';
-    } else {
-      alert("Usuário ou senha incorretos!");
-    }
-  }
-
-  function adicionarLink() {
-    alert("(Futuro) — Quando você me falar, eu faço salvar automaticamente na página!");
-  }
-</script>
-
-<!-- PAINEL DE ADIÇÃO DE LINKS -->
-<section style="margin-top:60px; padding:20px; background:#1d002b; border-radius:20px; max-width:700px; margin-left:auto; margin-right:auto; box-shadow:0 0 20px #5b1a88;">
-  <h2 style="font-size:2rem;">Adicionar Links</h2>
-  <p style="font-size:1.1rem; opacity:0.9;">Essa área será o painel onde você poderá adicionar seus links sozinho, pelo celular.</p>
-  <p style="margin-top:10px; font-size:0.9rem; opacity:0.6;">(A função ainda será ativada — me diga como você quer funcionar que eu programo!)</p>
-</section>
-
-<footer>
-
-<nav id="side-menu" style="position:fixed; left:-250px; top:0; width:250px; height:100%; background:#180027; padding:20px; box-shadow:0 0 20px #000; transition:0.3s;">
-  <h2 style="color:white;">Menu</h2>
-  <a href="#" style="color:white; text-decoration:none; display:block; margin:15px 0;">Login ADM</a>
+<!-- MENU LATERAL -->
+<nav id="menuLateral" class="menu-lateral">
+  <a href="#" class="fechar" onclick="toggleMenu()">✖ Fechar</a>
+  <a href="admin.html">⚙ Login ADM</a>
 </nav>
 
+<div class="container">
+
+  <h2>Categorias</h2>
+
+  <div class="categoria">
+    <h3>Categoria 1</h3>
+    <ul>
+      <li><a href="#">Link exemplo</a></li>
+    </ul>
+  </div>
+
+  <div class="categoria">
+    <h3>Categoria 2</h3>
+    <ul>
+      <li><a href="#">Link exemplo</a></li>
+    </ul>
+  </div>
+
+</div>
+
+<footer>
+  © 2025 dvzk3 — Todos os direitos reservados 👻
+</footer>
+
 <script>
+let menuAberto = false;
 function toggleMenu() {
-  const menu = document.getElementById('side-menu');
-  menu.style.left = menu.style.left === '0px' ? '-250px' : '0px';
+  const menu = document.getElementById("menuLateral");
+  if (!menuAberto) {
+    menu.style.right = "0";
+    menuAberto = true;
+  } else {
+    menu.style.right = "-260px";
+    menuAberto = false;
+  }
 }
 </script>
 

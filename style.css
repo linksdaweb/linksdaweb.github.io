@@ -1,24 +1,115 @@
-* { margin:0; padding:0; box-sizing:border-box; }
-body { background:#111; color:#eee; font-family:Arial; text-align:center; padding:20px; }
-
-header h1 { font-size:2.5rem; margin-bottom:10px; }
-header p { color:#aaa; }
-
-#links { margin-top:40px; display:flex; flex-direction:column; gap:15px; align-items:center; }
-
-.btn {
-    background:#222;
-    color:#fff;
-    padding:15px 20px;
-    border-radius:10px;
-    text-decoration:none;
-    border:2px solid #444;
-    width:90%;
-    max-width:350px;
-    transition:0.3s;
+body {
+  margin: 0;
+  background: #12001f;
+  color: white;
+  font-family: Arial, sans-serif;
 }
-.btn:hover {
-    background:#333;
-    transform:scale(1.05);
+
+header {
+  background: #3b0070;
+  padding: 15px;
+  text-align: center;
+  position: relative;
+  color: #fff;
 }
-footer { margin-top:50px; color:#777; }
+
+header h1 {
+  margin: 0;
+  font-size: 26px;
+}
+
+.menu-btn {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* MENU LATERAL */
+.menu-lateral {
+  width: 260px;
+  background: #4b0091;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: -260px;
+  padding: 20px;
+  transition: 0.3s ease;
+  box-shadow: -5px 0 10px rgba(0,0,0,0.5);
+}
+
+.menu-lateral a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  margin: 20px 0;
+  font-size: 20px;
+}
+
+.menu-lateral .fechar {
+  font-size: 22px;
+  margin-bottom: 30px;
+}
+
+.container {
+  padding: 20px;
+}
+
+.categoria {
+  background: #2a0044;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #7e2aff;
+}
+
+.categoria h3 {
+  margin: 0 0 10px;
+}
+
+.categoria a {
+  color: #cba3ff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  margin-top: 40px;
+  background: #3b0070;
+  font-size: 14px;
+  color: #fff;
+}
+
+/* LOGIN */
+.login-caixa {
+  max-width: 350px;
+  margin: 80px auto;
+  background: #2a0044;
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #7e2aff;
+}
+
+.login-caixa input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+.login-caixa button {
+  width: 100%;
+  padding: 12px;
+  background: #7e2aff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  margin-top: 15px;
+  cursor: pointer;
+}

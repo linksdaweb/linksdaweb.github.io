@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <title>Login ADM</title>
@@ -9,24 +9,24 @@
 
 <div class="login-caixa">
   <h2>Login ADM</h2>
-  
-  <input type="text" id="usuario" placeholder="Usuário">
-  <input type="password" id="senha" placeholder="Senha">
-  
-  <button onclick="logar()">Entrar</button>
 
-  <p id="erro"></p>
+  <input type="text" id="user" placeholder="Usuário">
+  <input type="password" id="pass" placeholder="Senha">
+
+  <button onclick="login()">Entrar</button>
+
+  <p id="erro" style="color: red; text-align:center;"></p>
 </div>
 
 <script>
-function logar() {
-  let user = document.getElementById("usuario").value;
-  let pass = document.getElementById("senha").value;
+function login() {
+  let u = document.getElementById("user").value;
+  let p = document.getElementById("pass").value;
 
-  if (user === "dvzk300112233" && pass === "0352011ivad") {
-    window.location.href = "painel.html"; // futura tela do adm
+  if (u === "dvzk300112233" && p === "0352011ivad") {
+    window.location.href = "painel.html";
   } else {
-    document.getElementById("erro").innerText = "Dados incorretos!";
+    document.getElementById("erro").innerText = "Usuário ou senha incorretos!";
   }
 }
 </script>
