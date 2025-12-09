@@ -1,25 +1,171 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Links da Web</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dvzk3</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #2b0040;
+      font-family: Arial, sans-serif;
+      color: #fff;
+      text-align: center;
+    }
+
+    header {
+      padding: 40px 0;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .marca {
+      font-size: 1.2rem;
+      opacity: 0.8;
+    }
+
+    /* Fantasminha original customizado (não Pac‑Man) */
+    .ghost {
+      width: 120px;
+      height: 140px;
+      background: #a64aff;
+      margin: 40px auto;
+      border-radius: 60px 60px 20px 20px;
+      position: relative;
+      box-shadow: 0 0 20px #c084ff;
+    }
+    .ghost::before, .ghost::after {
+      content: "";
+      position: absolute;
+      top: 40px;
+      width: 30px;
+      height: 40px;
+      background: #fff;
+      border-radius: 50%;
+    }
+    .ghost::before {
+      left: 20px;
+    }
+    .ghost::after {
+      right: 20px;
+    }
+    .ghost .pupil {
+      position: absolute;
+      top: 55px;
+      width: 10px;
+      height: 15px;
+      background: #000;
+      border-radius: 50%;
+    }
+    .ghost .p1 { left: 30px; }
+    .ghost .p2 { right: 30px; }
+
+    footer {
+      margin-top: 60px;
+      padding: 20px 0;
+      opacity: 0.6;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
-<header>
-<h1>Links da Web</h1>
-<p>Seus links favoritos, todos em um lugar.</p>
-</header>
 
-<main id="links">
-<a href="https://example.com" target="_blank" class="btn">Link Exemplo</a>
-<a href="https://youtube.com" target="_blank" class="btn">YouTube</a>
-<a href="https://github.com" target="_blank" class="btn">GitHub</a>
-</main>
+  <header>
+    <h1>Dvzk3</h1>
+    <div class="marca">Todos os direitos reservados © 2025</div>
+  </header>
+
+  <div class="ghost">
+    <div class="pupil p1"></div>
+    <div class="pupil p2"></div>
+  </div>
+
+  <footer>
+    Criado por Dvzk3
+    <section id="links" style="margin-top:40px;">
+    <h2 style="font-size:2rem; margin-bottom:20px;">Links da Web</h2>
+    <div style="max-width:600px; margin:0 auto; display:flex; flex-direction:column; gap:15px;">
+      <a href="#" style="background:#5f0aff; padding:15px; border-radius:12px; text-decoration:none; color:white; font-size:1.2rem; box-shadow:0 0 10px #7d3bff;">Exemplo de Link 1</a>
+      <a href="#" style="background:#5f0aff; padding:15px; border-radius:12px; text-decoration:none; color:white; font-size:1.2rem; box-shadow:0 0 10px #7d3bff;">Exemplo de Link 2</a>
+      <a href="#" style="background:#5f0aff; padding:15px; border-radius:12px; text-decoration:none; color:white; font-size:1.2rem; box-shadow:0 0 10px #7d3bff;">Exemplo de Link 3</a>
+    </div>
+  </section>
+
+<!-- CATEGORIAS -->
+<section style="margin-top:60px;">
+  <h2 style="font-size:2rem; margin-bottom:20px;">Categorias</h2>
+  <div style="max-width:700px; margin:0 auto; display:flex; flex-direction:column; gap:15px;">
+    <a href="#" style="background:#7a2fff; padding:15px; border-radius:14px; text-decoration:none; color:white; font-size:1.3rem; box-shadow:0 0 12px #9f63ff; display:flex; justify-content:center;">📱 Apps</a>
+    <a href="#" style="background:#7a2fff; padding:15px; border-radius:14px; text-decoration:none; color:white; font-size:1.3rem; box-shadow:0 0 12px #9f63ff; display:flex; justify-content:center;">🎮 Jogos</a>
+    <a href="#" style="background:#7a2fff; padding:15px; border-radius:14px; text-decoration:none; color:white; font-size:1.3rem; box-shadow:0 0 12px #9f63ff; display:flex; justify-content:center;">📁 Downloads</a>
+    <a href="#" style="background:#7a2fff; padding:15px; border-radius:14px; text-decoration:none; color:white; font-size:1.3rem; box-shadow:0 0 12px #9f63ff; display:flex; justify-content:center;">🛠 Ferramentas</a>
+    <a href="#" style="background:#7a2fff; padding:15px; border-radius:14px; text-decoration:none; color:white; font-size:1.3rem; box-shadow:0 0 12px #9f63ff; display:flex; justify-content:center;">😎 Anônimos</a>
+  </div>
+</section>
+
+<!-- SISTEMA DE LOGIN -->
+<section id="login-area" style="margin-top:60px; padding:25px; background:#1a0025; border-radius:20px; max-width:700px; margin-left:auto; margin-right:auto; box-shadow:0 0 20px #5b1a88;">
+  <h2 style="font-size:2rem;">Login do Administrador</h2>
+  <p style="font-size:1rem; opacity:0.8;">Acesso exclusivo do dono do site (Dvzk3).</p>
+
+  <div style="display:flex; flex-direction:column; gap:15px; margin-top:20px;">
+    <input id="user" type="text" placeholder="Usuário" style="padding:12px; border-radius:10px; border:none; font-size:1rem;">
+    <input id="pass" type="password" placeholder="Senha" style="padding:12px; border-radius:10px; border:none; font-size:1rem;">
+    <button onclick="login()" style="padding:14px; border:none; background:#7a2fff; border-radius:12px; color:white; font-size:1.1rem; cursor:pointer;">Entrar</button>
+  </div>
+</section>
+
+<!-- FORM PARA ADICIONAR LINKS -->
+<section id="painel-admin" style="display:none; margin-top:60px; padding:25px; background:#15001e; border-radius:20px; max-width:700px; margin-left:auto; margin-right:auto; box-shadow:0 0 25px #7f2adb;">
+  <h2 style="font-size:2rem;">Adicionar novo link</h2>
+  <p style="opacity:0.7; margin-bottom:20px;">Preencha os dados abaixo para criar um novo link no site.</p>
+
+  <div style="display:flex; flex-direction:column; gap:15px;">
+    <input id="nomeLink" type="text" placeholder="Nome do link" style="padding:12px; border-radius:10px; border:none; font-size:1rem;">
+    <input id="urlLink" type="text" placeholder="URL (https://...)" style="padding:12px; border-radius:10px; border:none; font-size:1rem;">
+
+    <select id="categoriaLink" style="padding:12px; border-radius:10px; border:none; font-size:1rem;">
+      <option value="Apps">📱 Apps</option>
+      <option value="Jogos">🎮 Jogos</option>
+      <option value="Downloads">📁 Downloads</option>
+      <option value="Ferramentas">🛠 Ferramentas</option>
+      <option value="Anonimos">😎 Anônimos</option>
+    </select>
+
+    <button onclick="adicionarLink()" style="padding:14px; border:none; background:#a244ff; border-radius:12px; color:white; font-size:1.2rem; cursor:pointer;">Adicionar link</button>
+  </div>
+</section>
+
+<script>
+  function login() {
+    const u = document.getElementById('user').value;
+    const p = document.getElementById('pass').value;
+
+    if (u === "dvzk3" && p === "1234") {
+      document.getElementById('login-area').style.display = 'none';
+      document.getElementById('painel-admin').style.display = 'block';
+    } else {
+      alert("Usuário ou senha incorretos!");
+    }
+  }
+
+  function adicionarLink() {
+    alert("(Futuro) — Quando você me falar, eu faço salvar automaticamente na página!");
+  }
+</script>
+
+<!-- PAINEL DE ADIÇÃO DE LINKS -->
+<section style="margin-top:60px; padding:20px; background:#1d002b; border-radius:20px; max-width:700px; margin-left:auto; margin-right:auto; box-shadow:0 0 20px #5b1a88;">
+  <h2 style="font-size:2rem;">Adicionar Links</h2>
+  <p style="font-size:1.1rem; opacity:0.9;">Essa área será o painel onde você poderá adicionar seus links sozinho, pelo celular.</p>
+  <p style="margin-top:10px; font-size:0.9rem; opacity:0.6;">(A função ainda será ativada — me diga como você quer funcionar que eu programo!)</p>
+</section>
 
 <footer>
-<p>Feito com ❤️ no Termux</p>
-</footer>
+
 </body>
 </html>
