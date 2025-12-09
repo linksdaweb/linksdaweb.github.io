@@ -75,6 +75,7 @@
 <body>
 
   <header>
+  <div id="menu-btn" onclick="toggleMenu()" style="position:absolute; left:20px; top:20px; font-size:2rem; cursor:pointer;">☰</div>
     <h1>Dvzk3</h1>
     <div class="marca">Todos os direitos reservados © 2025</div>
   </header>
@@ -95,50 +96,12 @@
     </div>
   </section>
 
-<!-- CATEGORIAS -->
-<section style="margin-top:60px;">
-  <h2 style="font-size:2rem; margin-bottom:20px;">Categorias</h2>
-  <div style="max-width:700px; margin:0 auto; display:flex; flex-direction:column; gap:15px;">
-    <a href="#" style="background:#7a2fff; padding:15px; border-radius:14px; text-decoration:none; color:white; font-size:1.3rem; box-shadow:0 0 12px #9f63ff; display:flex; justify-content:center;">📱 Apps</a>
-    <a href="#" style="background:#7a2fff; padding:15px; border-radius:14px; text-decoration:none; color:white; font-size:1.3rem; box-shadow:0 0 12px #9f63ff; display:flex; justify-content:center;">🎮 Jogos</a>
-    <a href="#" style="background:#7a2fff; padding:15px; border-radius:14px; text-decoration:none; color:white; font-size:1.3rem; box-shadow:0 0 12px #9f63ff; display:flex; justify-content:center;">📁 Downloads</a>
-    <a href="#" style="background:#7a2fff; padding:15px; border-radius:14px; text-decoration:none; color:white; font-size:1.3rem; box-shadow:0 0 12px #9f63ff; display:flex; justify-content:center;">🛠 Ferramentas</a>
-    <a href="#" style="background:#7a2fff; padding:15px; border-radius:14px; text-decoration:none; color:white; font-size:1.3rem; box-shadow:0 0 12px #9f63ff; display:flex; justify-content:center;">😎 Anônimos</a>
-  </div>
-</section>
+
 
 <!-- SISTEMA DE LOGIN -->
-<section id="login-area" style="margin-top:60px; padding:25px; background:#1a0025; border-radius:20px; max-width:700px; margin-left:auto; margin-right:auto; box-shadow:0 0 20px #5b1a88;">
-  <h2 style="font-size:2rem;">Login do Administrador</h2>
-  <p style="font-size:1rem; opacity:0.8;">Acesso exclusivo do dono do site (Dvzk3).</p>
 
-  <div style="display:flex; flex-direction:column; gap:15px; margin-top:20px;">
-    <input id="user" type="text" placeholder="Usuário" style="padding:12px; border-radius:10px; border:none; font-size:1rem;">
-    <input id="pass" type="password" placeholder="Senha" style="padding:12px; border-radius:10px; border:none; font-size:1rem;">
-    <button onclick="login()" style="padding:14px; border:none; background:#7a2fff; border-radius:12px; color:white; font-size:1.1rem; cursor:pointer;">Entrar</button>
-  </div>
-</section>
 
-<!-- FORM PARA ADICIONAR LINKS -->
-<section id="painel-admin" style="display:none; margin-top:60px; padding:25px; background:#15001e; border-radius:20px; max-width:700px; margin-left:auto; margin-right:auto; box-shadow:0 0 25px #7f2adb;">
-  <h2 style="font-size:2rem;">Adicionar novo link</h2>
-  <p style="opacity:0.7; margin-bottom:20px;">Preencha os dados abaixo para criar um novo link no site.</p>
 
-  <div style="display:flex; flex-direction:column; gap:15px;">
-    <input id="nomeLink" type="text" placeholder="Nome do link" style="padding:12px; border-radius:10px; border:none; font-size:1rem;">
-    <input id="urlLink" type="text" placeholder="URL (https://...)" style="padding:12px; border-radius:10px; border:none; font-size:1rem;">
-
-    <select id="categoriaLink" style="padding:12px; border-radius:10px; border:none; font-size:1rem;">
-      <option value="Apps">📱 Apps</option>
-      <option value="Jogos">🎮 Jogos</option>
-      <option value="Downloads">📁 Downloads</option>
-      <option value="Ferramentas">🛠 Ferramentas</option>
-      <option value="Anonimos">😎 Anônimos</option>
-    </select>
-
-    <button onclick="adicionarLink()" style="padding:14px; border:none; background:#a244ff; border-radius:12px; color:white; font-size:1.2rem; cursor:pointer;">Adicionar link</button>
-  </div>
-</section>
 
 <script>
   function login() {
@@ -166,6 +129,18 @@
 </section>
 
 <footer>
+
+<nav id="side-menu" style="position:fixed; left:-250px; top:0; width:250px; height:100%; background:#180027; padding:20px; box-shadow:0 0 20px #000; transition:0.3s;">
+  <h2 style="color:white;">Menu</h2>
+  <a href="#" style="color:white; text-decoration:none; display:block; margin:15px 0;">Login ADM</a>
+</nav>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById('side-menu');
+  menu.style.left = menu.style.left === '0px' ? '-250px' : '0px';
+}
+</script>
 
 </body>
 </html>
