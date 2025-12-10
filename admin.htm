@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel ADM - Links da Web</title>
+  <style>
+    body { background:#150022; color:#fff; font-family:Poppins; text-align:center; }
+    input,button { margin:8px; padding:10px; border-radius:10px; border:none; }
+    input { width:80%; }
+    button { background:#7b27ff; color:white; cursor:pointer; }
+    #painel { display:none; margin-top:20px; }
+  </style>
+</head>
+<body>
+  <h1>Painel ADM</h1>
+  <div id="login">
+    <p>Usuário:</p><input id="user">
+    <p>Senha:</p><input type="password" id="pass">
+    <button onclick="login()">Entrar</button>
+  </div>
+  <div id="painel">
+    <h2>Adicionar Link</h2>
+    <input id="nome" placeholder="Nome do link"><br>
+    <input id="url" placeholder="URL do link"><br>
+    <button onclick="addLink()">Adicionar</button>
+    <h2>Excluir Link</h2>
+    <input id="delNome" placeholder="Nome exato do link"><br>
+    <button onclick="delLink()">Excluir</button>
+  </div>
+
+  <script>
+    async function login() {
+      const u=document.getElementById('user').value;
+      const p=document.getElementById('pass').value;
+      if(u==='dvzk300112233' && p==='0352011ivad'){
+        document.getElementById('login').style.display='none';
+        document.getElementById('painel').style.display='block';
+      } else alert('Usuário ou senha incorretos!');
+    }
+
+    async function addLink() {
+      const nome=document.getElementById('nome').value;
+      const url=document.getElementById('url').value;
+      const res=await fetch('https://api.jsonbin.io/v3/b/6938bf13d0ea881f401e3735/latest',{
+        headers:{'X-Master-Key':'$2a$10$CAVCHZsnLuFy.mPUgCZp5eUY8rEJ7SY2xLeYifcsTeT7Gbkmrk4YW'}
+      });
+      const data=await res.json();
+      const lista=data.record;
+      lista.push({nome,url});
+      await fetch('https://api.jsonbin.io/v3/b/6938bf13d0ea881f401e3735',{
+        method:'PUT',
+        headers:{
+          'Content-Type':'application/json',
+          'X-Master-Key':'$2a$10$CAVCHZsnLuFy.mPUgCZp5eUY8rEJ7SY2xLeYifcsTeT7Gbkmrk4YW'
+        },
+        body:JSON.stringify(lista)
+      });
+      alert('Link adicionado!');
+    }
+
+    async function delLink() {
+      const nome=document.getElementById('delNome').value;
+      const res=await fetch('https://api.jsonbin.io/v3/b/6938bf13d0ea881f401e3735/latest',{
+        headers:{'X-Master-Key':'$2a$10$CAVCHZsnLuFy.mPUgCZp5eUY8rEJ7SY2xLeYifcsTeT7Gbkmrk4YW'}
+      });
+      const data=await res.json();
+      const lista=data.record.filter(l=>l.nome!==nome);
+      await fetch('https://api.jsonbin.io/v3/b/6938bf13d0ea881f401e3735',{
+        method:'PUT',
+        headers:{
+          'Content-Type':'application/json',
+          'X-Master-Key':'$2a$10$CAVCHZsnLuFy.mPUgCZp5eUY8rEJ7SY2xLeYifcsTeT7Gbkmrk4YW'
+        },
+        body:JSON.stringify(lista)
+      });
+      alert('Link removido!');
+    }
+  </script>
+</body>
+</html>
