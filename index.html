@@ -3,127 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Links da Web</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: radial-gradient(circle at top, #250034, #0e0016);
-      color: #fff;
-      font-family: 'Poppins', sans-serif;
-      text-align: center;
-    }
-    header {
-      padding: 40px 0;
-    }
-    h1 { font-size: 3rem; margin-bottom: 10px; color: #b56bff; text-shadow: 0 0 20px #9d4dff; }
-    .marca { font-size: 1rem; opacity: 0.8; }
-
-    /* Fantasminha */
-    .ghost {
-      width: 120px;
-      height: 140px;
-      background: #a64aff;
-      margin: 40px auto;
-      border-radius: 60px 60px 20px 20px;
-      position: relative;
-      box-shadow: 0 0 25px #c084ff;
-    }
-    .ghost::before, .ghost::after {
-      content: "";
-      position: absolute;
-      top: 40px;
-      width: 30px;
-      height: 40px;
-      background: #fff;
-      border-radius: 50%;
-    }
-    .ghost::before { left: 20px; }
-    .ghost::after { right: 20px; }
-    .ghost .pupil {
-      position: absolute;
-      top: 55px;
-      width: 10px;
-      height: 15px;
-      background: #000;
-      border-radius: 50%;
-    }
-    .ghost .p1 { left: 30px; }
-    .ghost .p2 { right: 30px; }
-
-    footer {
-      margin-top: 60px;
-      padding: 20px 0;
-      opacity: 0.7;
-      font-size: 0.9rem;
-    }
-
-    #links a {
-      display: block;
-      background: #5f0aff;
-      margin: 10px auto;
-      padding: 15px;
-      border-radius: 12px;
-      text-decoration: none;
-      color: white;
-      font-size: 1.1rem;
-      box-shadow: 0 0 12px #7d3bff;
-      transition: 0.2s;
-      max-width: 400px;
-    }
-    #links a:hover { transform: scale(1.05); box-shadow: 0 0 18px #b574ff; }
-
-    /* Menu */
-    #menu-btn { position: absolute; left: 20px; top: 20px; font-size: 2rem; cursor: pointer; }
-    #side-menu {
-      position: fixed; left: -250px; top: 0;
-      width: 250px; height: 100%; background: #1d0033;
-      padding: 20px; box-shadow: 0 0 20px #000; transition: 0.3s;
-    }
-    #side-menu a { display:block; color:white; margin:15px 0; text-decoration:none; }
-  </style>
+  <title>Dvzk3</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="menu-btn" onclick="toggleMenu()">☰</div>
 
-  <header>
-    <h1>Links da Web</h1>
-    <div class="marca">Todos os direitos reservados © Dvzk3 2025</div>
-  </header>
-
-  <div class="ghost">
-    <div class="pupil p1"></div>
-    <div class="pupil p2"></div>
+<header>
+  <div class="logo">
+    <span class="fantasma">👻</span>
+    Dvzk3
   </div>
+  <div class="menu">
+    ⋮
+    <ul>
+      <li>Sobre Nós</li>
+    </ul>
+  </div>
+</header>
 
-  <section id="links"></section>
+<main>
+  <h2>Categorias</h2>
+  <div class="categories">
+    <!-- Adicione suas categorias aqui -->
+    <div class="category">Categoria 1</div>
+    <div class="category">Categoria 2</div>
+    <div class="category">Categoria 3</div>
+  </div>
+  <div style="margin-top: 30px;">
+    <a href="login.html"><button>Login</button></a>
+  </div>
+</main>
 
-  <footer>Criado por Dvzk3 💜</footer>
+<footer>
+  <p><strong>Segurança e Privacidade:</strong> Todo conteúdo disponibilizado aqui é seguro. Não armazenamos dados pessoais e recomendamos sempre usar redes confiáveis para acesso. Links externos devem ser acessados por sua própria conta e risco.</p>
+  <p>© 2025 Dvzk3 | Feito com 💜</p>
+</footer>
 
-  <nav id="side-menu">
-    <h2>Menu</h2>
-    <a href="admin.html">Login ADM</a>
-  </nav>
-
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById('side-menu');
-      menu.style.left = menu.style.left === '0px' ? '-250px' : '0px';
-    }
-
-    async function carregarLinks() {
-      const res = await fetch('https://api.jsonbin.io/v3/b/6938bf13d0ea881f401e3735/latest', {
-        headers: { 'X-Master-Key': '$2a$10$CAVCHZsnLuFy.mPUgCZp5eUY8rEJ7SY2xLeYifcsTeT7Gbkmrk4YW' }
-      });
-      const data = await res.json();
-      const links = data.record;
-      const area = document.getElementById('links');
-      area.innerHTML = '';
-      links.forEach(l => {
-        area.innerHTML += `<a href="${l.url}" target="_blank">${l.nome}</a>`;
-      });
-    }
-    carregarLinks();
-  </script>
 </body>
 </html>
