@@ -1,61 +1,124 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Links da Web</title>
-  <link rel="stylesheet" href="style.css">
+<title>dvzk3 Links</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #5e00a8;
+        color: white;
+        text-align: center;
+    }
+
+    /* Fantasminha */
+    .ghost {
+        font-size: 80px;
+        margin-top: 20px;
+    }
+
+    /* Título */
+    h1 {
+        margin-top: 5px;
+        font-size: 28px;
+        letter-spacing: 1px;
+    }
+
+    /* Menu hambúrguer */
+    .menu-btn {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        font-size: 35px;
+        cursor: pointer;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #3c006d;
+        overflow-x: hidden;
+        transition: 0.3s;
+        padding-top: 60px;
+    }
+
+    .sidebar a {
+        padding: 12px;
+        text-decoration: none;
+        font-size: 20px;
+        color: white;
+        display: block;
+        text-align: left;
+    }
+
+    .sidebar a:hover {
+        background: #6400c5;
+    }
+
+    /* Lista de links */
+    .link-card {
+        background: #ffffff20;
+        padding: 14px;
+        margin: 10px;
+        border-radius: 8px;
+        backdrop-filter: blur(4px);
+        font-size: 18px;
+    }
+
+    .link-card a {
+        color: #ffeaff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    /* Rodapé */
+    footer {
+        margin-top: 30px;
+        font-size: 13px;
+        opacity: 0.7;
+    }
+</style>
+
+<script>
+function abrirMenu() {
+    document.getElementById("sidebar").style.width = "200px";
+}
+
+function fecharMenu() {
+    document.getElementById("sidebar").style.width = "0";
+}
+</script>
+
 </head>
 <body>
 
-<header>
-  <h1>Links da Web 👻</h1>
-  <div class="menu-btn" onclick="toggleMenu()">☰</div>
-</header>
+<!-- Botão de menu -->
+<div class="menu-btn" onclick="abrirMenu()">☰</div>
 
-<!-- MENU LATERAL -->
-<nav id="menuLateral" class="menu-lateral">
-  <a href="#" class="fechar" onclick="toggleMenu()">✖ Fechar</a>
-  <a href="admin.html">⚙ Login ADM</a>
-</nav>
-
-<div class="container">
-
-  <h2>Categorias</h2>
-
-  <div class="categoria">
-    <h3>Categoria 1</h3>
-    <ul>
-      <li><a href="#">Link exemplo</a></li>
-    </ul>
-  </div>
-
-  <div class="categoria">
-    <h3>Categoria 2</h3>
-    <ul>
-      <li><a href="#">Link exemplo</a></li>
-    </ul>
-  </div>
-
+<!-- Sidebar -->
+<div id="sidebar" class="sidebar">
+    <a href="#" onclick="fecharMenu()">✖ Fechar</a>
+    <a href="login.html">Login ADM</a>
 </div>
 
-<footer>
-  © 2025 dvzk3 — Todos os direitos reservados 👻
-</footer>
+<!-- Fantasminha -->
+<div class="ghost">👻</div>
 
-<script>
-let menuAberto = false;
-function toggleMenu() {
-  const menu = document.getElementById("menuLateral");
-  if (!menuAberto) {
-    menu.style.right = "0";
-    menuAberto = true;
-  } else {
-    menu.style.right = "-260px";
-    menuAberto = false;
-  }
-}
-</script>
+<h1>dvzk3 Links</h1>
+
+<!-- Exemplo de links (você depois edita no GitHub) -->
+<div class="link-card"><a href="#">Exemplo 1</a></div>
+<div class="link-card"><a href="#">Exemplo 2</a></div>
+<div class="link-card"><a href="#">Exemplo 3</a></div>
+
+<footer>© 2025 dvzk3 — Todos os direitos reservados</footer>
 
 </body>
 </html>
