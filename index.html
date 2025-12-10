@@ -1,124 +1,91 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>dvzk3 Links</title>
-
-<style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: #5e00a8;
-        color: white;
-        text-align: center;
-    }
-
-    /* Fantasminha */
-    .ghost {
-        font-size: 80px;
-        margin-top: 20px;
-    }
-
-    /* Título */
-    h1 {
-        margin-top: 5px;
-        font-size: 28px;
-        letter-spacing: 1px;
-    }
-
-    /* Menu hambúrguer */
-    .menu-btn {
-        position: absolute;
-        top: 15px;
-        left: 15px;
-        font-size: 35px;
-        cursor: pointer;
-    }
-
-    /* Sidebar */
-    .sidebar {
-        height: 100%;
-        width: 0;
-        position: fixed;
-        top: 0;
-        left: 0;
-        background-color: #3c006d;
-        overflow-x: hidden;
-        transition: 0.3s;
-        padding-top: 60px;
-    }
-
-    .sidebar a {
-        padding: 12px;
-        text-decoration: none;
-        font-size: 20px;
-        color: white;
-        display: block;
-        text-align: left;
-    }
-
-    .sidebar a:hover {
-        background: #6400c5;
-    }
-
-    /* Lista de links */
-    .link-card {
-        background: #ffffff20;
-        padding: 14px;
-        margin: 10px;
-        border-radius: 8px;
-        backdrop-filter: blur(4px);
-        font-size: 18px;
-    }
-
-    .link-card a {
-        color: #ffeaff;
-        text-decoration: none;
-        font-weight: bold;
-    }
-
-    /* Rodapé */
-    footer {
-        margin-top: 30px;
-        font-size: 13px;
-        opacity: 0.7;
-    }
-</style>
-
-<script>
-function abrirMenu() {
-    document.getElementById("sidebar").style.width = "200px";
-}
-
-function fecharMenu() {
-    document.getElementById("sidebar").style.width = "0";
-}
-</script>
-
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>dvzk3 • Links da Web</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- Botão de menu -->
-<div class="menu-btn" onclick="abrirMenu()">☰</div>
+<header class="topbar">
+  <div class="left">
+    <button id="menuBtn" class="hamb" onclick="toggleMenu()">☰</button>
+    <div class="brand">
+      <div class="ghost">👻</div>
+      <div class="title">dvzk3 Links</div>
+    </div>
+  </div>
+</header>
 
-<!-- Sidebar -->
-<div id="sidebar" class="sidebar">
-    <a href="#" onclick="fecharMenu()">✖ Fechar</a>
-    <a href="login.html">Login ADM</a>
-</div>
+<!-- MENU LATERAL SIMPLES (sem login) -->
+<nav id="sidemenu" class="sidemenu">
+  <button class="close" onclick="toggleMenu()">✖ Fechar</button>
+  <a href="index.html">Início</a>
+  <!-- Login é página secreta: não colocar link aqui -->
+  <a href="https://linksdaweb.github.io/linksdaweb/login.html" style="display:none">Login ADM</a>
+</nav>
 
-<!-- Fantasminha -->
-<div class="ghost">👻</div>
+<main class="main">
+  <section class="hero">
+    <h1>Seus links favoritos — dvzk3</h1>
+    <p class="sub">Clique e abra no navegador. Adicione/Remova via painel ADM.</p>
+  </section>
 
-<h1>dvzk3 Links</h1>
+  <section id="linksArea" class="linksArea">
+    <!-- Cards de links carregados via JS -->
+    <div class="loading">Carregando links…</div>
+  </section>
 
-<!-- Exemplo de links (você depois edita no GitHub) -->
-<div class="link-card"><a href="#">Exemplo 1</a></div>
-<div class="link-card"><a href="#">Exemplo 2</a></div>
-<div class="link-card"><a href="#">Exemplo 3</a></div>
+  <footer class="rodape">
+    © 2025 dvzk3 — Todos os direitos reservados
+  </footer>
+</main>
 
-<footer>© 2025 dvzk3 — Todos os direitos reservados</footer>
+<script>
+// CONFIG (não mude se não souber)
+const BIN_ID = "6938bf13d0ea881f401e3735";
+const API_KEY = "$2a$10$CAVCHZsnLuFy.mPUgCZp5eUY8rEJ7SY2xLeYifcsTeT7Gbkmrk4YW";
+const BIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
+
+// Menu
+function toggleMenu(){
+  const menu = document.getElementById('sidemenu');
+  menu.style.left = menu.style.left === '0px' ? '-260px' : '0px';
+}
+
+// Carregar links do JSONBin e renderizar
+async function loadLinks(){
+  try{
+    const res = await fetch(BIN_URL, { headers: { "X-Master-Key": API_KEY }});
+    const json = await res.json();
+    const links = (json.record && json.record.links) ? json.record.links : [];
+    const area = document.getElementById('linksArea');
+    area.innerHTML = '';
+    if(!links.length){
+      area.innerHTML = '<div class="empty">Nenhum link ainda. Adicione pelo ADM.</div>';
+      return;
+    }
+    links.forEach(l => {
+      const div = document.createElement('div');
+      div.className = 'linkCard';
+      div.innerHTML = `<a href="${l.url}" target="_blank" rel="noopener noreferrer">
+                        <div class="linkTitle">${escapeHtml(l.name)}</div>
+                        <div class="linkMeta">${escapeHtml(l.cat || '')}</div>
+                       </a>`;
+      area.appendChild(div);
+    });
+  }catch(err){
+    document.getElementById('linksArea').innerHTML = '<div class="err">Erro ao carregar links. Verifique sua internet.</div>';
+    console.error(err);
+  }
+}
+
+// pequena função pra escapar html
+function escapeHtml(s){ return String(s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+loadLinks();
+</script>
 
 </body>
 </html>

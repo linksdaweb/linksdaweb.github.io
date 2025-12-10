@@ -1,115 +1,72 @@
-body {
-  margin: 0;
-  background: #12001f;
-  color: white;
-  font-family: Arial, sans-serif;
+/* Geral */
+:root{
+  --bg:#070007;
+  --panel:#100016;
+  --neon:#a100ff;
+  --accent:#5e00a8;
+  --glass: rgba(255,255,255,0.04);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--bg);
+  color:#fff;
+  font-family:Inter, Arial, sans-serif;
+  -webkit-font-smoothing:antialiased;
 }
 
-header {
-  background: #3b0070;
-  padding: 15px;
-  text-align: center;
-  position: relative;
-  color: #fff;
+/* Topbar */
+.topbar{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 16px; background:linear-gradient(180deg,#13001b, #07000e);
+  box-shadow: 0 6px 20px rgba(161,0,255,0.08);
+  position:sticky; top:0; z-index:50;
 }
+.left{display:flex; align-items:center; gap:12px}
+.hamb{font-size:22px; background:transparent; color:#fff; border:0; padding:6px; cursor:pointer}
+.brand{display:flex; align-items:center; gap:10px}
+.ghost{font-size:34px; transform:translateY(-2px); filter:drop-shadow(0 6px 12px rgba(161,0,255,0.45))}
+.title{font-weight:700; font-size:18px; letter-spacing:0.6px}
 
-header h1 {
-  margin: 0;
-  font-size: 26px;
+/* Side menu */
+.sidemenu{
+  position:fixed; left:-260px; top:0; width:260px; height:100vh;
+  background:linear-gradient(180deg,#2a003a,#120018); padding:20px; transition:0.25s;
+  box-shadow: 8px 0 30px rgba(0,0,0,0.6);
+  z-index:60;
+  display:flex; flex-direction:column;
 }
+.sidemenu .close{background:transparent;border:0;color:#fff; font-size:16px; text-align:left; padding:0; margin-bottom:12px; cursor:pointer}
+.sidemenu a{color:#fff; text-decoration:none; padding:8px 0; font-size:16px}
 
-.menu-btn {
-  position: absolute;
-  right: 15px;
-  top: 10px;
-  font-size: 28px;
-  cursor: pointer;
+/* Main */
+.main{padding:18px 14px 80px}
+.hero{text-align:center; margin:8px 0 18px}
+.hero h1{margin:6px 0 4px; font-size:20px}
+.hero .sub{color:#e8d9ff88; margin:0; font-size:13px}
+
+/* Links area */
+.linksArea{display:flex; flex-direction:column; gap:12px; max-width:720px; margin:0 auto}
+.linkCard{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  padding:12px; border-radius:10px; border:1px solid rgba(161,0,255,0.12);
+  box-shadow: 0 8px 20px rgba(161,0,255,0.04);
+  transition: transform .14s ease, box-shadow .14s;
 }
+.linkCard a{display:block; text-decoration:none; color:inherit}
+.linkTitle{font-weight:700; font-size:16px}
+.linkMeta{margin-top:6px; font-size:13px; color:#e8d9ff99}
 
-/* MENU LATERAL */
-.menu-lateral {
-  width: 260px;
-  background: #4b0091;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  right: -260px;
-  padding: 20px;
-  transition: 0.3s ease;
-  box-shadow: -5px 0 10px rgba(0,0,0,0.5);
-}
+/* Rodapé */
+.rodape{text-align:center; margin-top:26px; color:#d9c6ff88; font-size:13px}
 
-.menu-lateral a {
-  display: block;
-  color: white;
-  text-decoration: none;
-  margin: 20px 0;
-  font-size: 20px;
-}
-
-.menu-lateral .fechar {
-  font-size: 22px;
-  margin-bottom: 30px;
-}
-
-.container {
-  padding: 20px;
-}
-
-.categoria {
-  background: #2a0044;
-  padding: 15px;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  border: 1px solid #7e2aff;
-}
-
-.categoria h3 {
-  margin: 0 0 10px;
-}
-
-.categoria a {
-  color: #cba3ff;
-  text-decoration: none;
-  font-size: 16px;
-}
-
-footer {
-  text-align: center;
-  padding: 25px;
-  margin-top: 40px;
-  background: #3b0070;
-  font-size: 14px;
-  color: #fff;
-}
-
-/* LOGIN */
-.login-caixa {
-  max-width: 350px;
-  margin: 80px auto;
-  background: #2a0044;
-  padding: 25px;
-  border-radius: 12px;
-  border: 1px solid #7e2aff;
-}
-
-.login-caixa input {
-  width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  border-radius: 8px;
-  border: none;
-  outline: none;
-}
-
-.login-caixa button {
-  width: 100%;
-  padding: 12px;
-  background: #7e2aff;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 18px;
-  margin-top: 15px;
-  cursor: pointer;
+/* Mobile tweaks */
+@media (max-width:600px){
+  .topbar{padding:12px}
+  .ghost{font-size:44px}
+  .title{font-size:18px}
+  .linkTitle{font-size:17px}
+  .linkCard{padding:14px}
+  .sidemenu{width:84%; left:-100%;}
+  .sidemenu.open{left:0}
 }
