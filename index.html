@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!DOCTYPE html><html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,137 +7,135 @@
     body {
       margin: 0;
       padding: 0;
-      background: #2b0040;
+      background: #1a0026;
       font-family: Arial, sans-serif;
       color: #fff;
       text-align: center;
-    }
+    }header { padding: 40px 0 20px 0; }
 
-    header {
-      padding: 40px 0;
-    }
+h1 { font-size: 3rem; margin-bottom: 5px; }
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-    }
+.marca { font-size: 1.1rem; opacity: 0.8; }
 
-    .marca {
-      font-size: 1.2rem;
-      opacity: 0.8;
-    }
+/* FANTASMINHA ORIGINAL */
+.ghost {
+  width: 120px;
+  height: 140px;
+  background: #a64aff;
+  margin: 40px auto;
+  border-radius: 60px 60px 20px 20px;
+  position: relative;
+  box-shadow: 0 0 25px #c084ff;
+}
 
-    /* Fantasminha ORIGINAL */
-    .ghost {
-      width: 120px;
-      height: 140px;
-      background: #a64aff;
-      margin: 40px auto;
-      border-radius: 60px 60px 20px 20px;
-      position: relative;
-      box-shadow: 0 0 20px #c084ff;
-    }
-    .ghost::before, .ghost::after {
-      content: "";
-      position: absolute;
-      top: 40px;
-      width: 30px;
-      height: 40px;
-      background: #fff;
-      border-radius: 50%;
-    }
-    .ghost::before { left: 20px; }
-    .ghost::after { right: 20px; }
-    .ghost .pupil {
-      position: absolute;
-      top: 55px;
-      width: 10px;
-      height: 15px;
-      background: #000;
-      border-radius: 50%;
-    }
-    .ghost .p1 { left: 30px; }
-    .ghost .p2 { right: 30px; }
+.ghost::before, .ghost::after {
+  content: "";
+  position: absolute;
+  top: 40px;
+  width: 30px;
+  height: 40px;
+  background: #fff;
+  border-radius: 50%;
+}
+.ghost::before { left: 20px; }
+.ghost::after { right: 20px; }
 
-    /* Categorias */
-    .categoria {
-      background: #5f0aff;
-      padding: 15px;
-      border-radius: 12px;
-      text-decoration: none;
-      color: white;
-      font-size: 1.3rem;
-      box-shadow: 0 0 10px #7d3bff;
-      display: block;
-      margin: 15px auto;
-      max-width: 600px;
-    }
+.ghost .pupil {
+  position: absolute;
+  top: 55px;
+  width: 10px;
+  height: 15px;
+  background: #000;
+  border-radius: 50%;
+}
+.ghost .p1 { left: 30px; }
+.ghost .p2 { right: 30px; }
 
-    /* Barra de pesquisa */
-    #search {
-      margin-top: 40px;
-      padding: 12px;
-      width: 80%;
-      max-width: 500px;
-      border-radius: 10px;
-      border: none;
-      font-size: 1.1rem;
-      outline: none;
-    }
+/* LINKS / CATEGORIAS */
+.categoria, .link-item {
+  background: #5f0aff;
+  padding: 15px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: white;
+  font-size: 1.3rem;
+  box-shadow: 0 0 12px #7d3bff;
+  display: block;
+  margin: 15px auto;
+  max-width: 600px;
+  transition: 0.2s;
+}
+.categoria:hover, .link-item:hover { transform: scale(1.03); }
 
-    footer {
-      margin-top: 60px;
-      padding: 20px 0;
-      opacity: 0.6;
-      font-size: 0.9rem;
-    }
+/* Pesquisa */
+#search {
+  margin-top: 30px;
+  padding: 12px;
+  width: 85%;
+  max-width: 500px;
+  border-radius: 10px;
+  border: none;
+  font-size: 1.1rem;
+  outline: none;
+  text-align:center;
+}
+
+section { margin-top: 50px; }
+
+footer {
+  margin-top: 60px;
+  padding: 20px 0;
+  opacity: 0.6;
+  font-size: 0.9rem;
+}
+
+.sobre {
+  background:#240035;
+  padding:20px;
+  border-radius:15px;
+  max-width:700px;
+  margin:40px auto;
+  box-shadow:0 0 15px #6c1aff;
+  text-align:left;
+}
+
+.sobre h3 { margin-top:0; }
+
   </style>
 </head>
-<body>
+<body><header>
+  <h1>Dvzk3</h1>
+  <div class="marca">Todos os direitos reservados © 2025</div>
+</header><div class="ghost">
+  <div class="pupil p1"></div>
+  <div class="pupil p2"></div>
+</div><input type="text" id="search" placeholder="Pesquisar..." onkeyup="searchLinks()"><section id="categorias">
+  <h2 style="font-size:2rem;">Categorias</h2><a class="categoria" href="#web">Web</a> <a class="categoria" href="#webdeep">Webd33p</a>
 
-  <header>
-    <h1>Dvzk3</h1>
-    <div class="marca">Todos os direitos reservados © 2025</div>
-  </header>
+</section><section id="web">
+  <h2 style="font-size:2rem;">Web</h2><a class="link-item" href="https://apkpure.com">APKPure – Baixar APKs</a> <a class="link-item" href="https://pixeldrain.com">Pixeldrain – Upload rápido</a> <a class="link-item" href="https://encycolorpedia.com/">Encycolorpedia – Cores HEX</a>
 
-  <div class="ghost">
-    <div class="pupil p1"></div>
-    <div class="pupil p2"></div>
-  </div>
+</section><section id="webdeep">
+  <h2 style="font-size:2rem;">Webd33p</h2><a class="link-item" href="https://ahmia.fi/">Ahmia – Pesquisa Onion</a> <a class="link-item" href="https://onionlandsearchengine.com/">OnionLand Search</a>
 
-  <!-- Barra de pesquisa -->
-  <input type="text" id="search" placeholder="Pesquisar..." onkeyup="searchLinks()">
-
-  <section id="categorias" style="margin-top:40px;">
-    <h2 style="font-size:2rem; margin-bottom:20px;">Categorias</h2>
-
-    <a class="categoria" href="#apps">Web</a>
-    <a class="categoria" href="#jogos">Webd33p</b>
-
-  </section>
-
-  <section id="links-prontos" style="margin-top:60px;">
-    <h2 style="font-size:2rem; margin-bottom:20px;">Links Prontos</h2>
-
-    <a class="categoria" href="https://apkpure.com">APKPURE – Baixar APKs</a>
-    <a class="categoria" href="https://www.emulatorgames.net/">ROMs e Emuladores</b>
-    <a class="categoria" href="https://pixeldrain.com/">PixelDrain – Upload rápido</a>
-
-  </section>
-
-  <footer>Criado por Dvzk3</footer>
-
-<script>
+</section><section class="sobre">
+  <h3>Sobre Nós</h3>
+  <p>Somos a <strong>Dvzk3 Web</strong>, focados em disponibilizar links, conteúdos e ferramentas de forma simples e organizada para todo mundo.</p>
+  <p>Nosso objetivo é facilitar sua navegação, trazendo tudo em um só lugar.</p>  <h3>Contato</h3>
+  <p>Tem alguma sugestão? Mande para: <strong>@dvzk3</strong></p>  <h3>Informações</h3>
+  <p>Alguns links podem levar a sites externos que não temos controle. Utilize por sua conta e risco.</p>
+  <p>Não nos responsabilizamos por qualquer dano, uso incorreto ou conteúdo de terceiros. Apenas organizamos e disponibilizamos acesso fácil.</p>
+</section><footer>
+  Criado por Dvzk3
+</footer><script>
 function searchLinks() {
   const texto = document.getElementById('search').value.toLowerCase();
-  const itens = document.querySelectorAll('.categoria');
+  const itens = document.querySelectorAll('.categoria, .link-item');
 
   itens.forEach(item => {
     const nome = item.textContent.toLowerCase();
     item.style.display = nome.includes(texto) ? 'block' : 'none';
   });
 }
-</script>
-
-</body>
+</script></body>
 </html>
