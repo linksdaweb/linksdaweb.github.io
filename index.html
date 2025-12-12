@@ -1,163 +1,144 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dvzk3</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dvzk3</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #2b0040;
+      font-family: Arial, sans-serif;
+      color: #fff;
+      text-align: center;
+    }
 
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-    background: #2b0040;
-    font-family: Arial, sans-serif;
-    color: #fff;
-    text-align: center;
-  }
+    header {
+      padding: 40px 0;
+    }
 
-  header {
-    padding: 40px 0;
-    position: relative;
-  }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
 
-  /* MENU BOTÃO */
-  #menu-btn {
-    position: absolute;
-    left: 20px;
-    top: 20px;
-    font-size: 2.4rem;
-    cursor: pointer;
-    z-index: 999;
-    text-shadow: 0 0 10px #c084ff;
-  }
+    .marca {
+      font-size: 1.2rem;
+      opacity: 0.8;
+    }
 
-  /* MENU LATERAL */
-  #side-menu {
-    position: fixed;
-    left: -250px;
-    top: 0;
-    width: 250px;
-    height: 100%;
-    background: #180027;
-    padding: 20px;
-    box-shadow: 0 0 20px #000;
-    transition: 0.3s;
-    z-index: 998;
-  }
+    /* Fantasminha ORIGINAL */
+    .ghost {
+      width: 120px;
+      height: 140px;
+      background: #a64aff;
+      margin: 40px auto;
+      border-radius: 60px 60px 20px 20px;
+      position: relative;
+      box-shadow: 0 0 20px #c084ff;
+    }
+    .ghost::before, .ghost::after {
+      content: "";
+      position: absolute;
+      top: 40px;
+      width: 30px;
+      height: 40px;
+      background: #fff;
+      border-radius: 50%;
+    }
+    .ghost::before { left: 20px; }
+    .ghost::after { right: 20px; }
+    .ghost .pupil {
+      position: absolute;
+      top: 55px;
+      width: 10px;
+      height: 15px;
+      background: #000;
+      border-radius: 50%;
+    }
+    .ghost .p1 { left: 30px; }
+    .ghost .p2 { right: 30px; }
 
-  #side-menu a {
-    display: block;
-    color: white;
-    margin: 20px 0;
-    text-decoration: none;
-    font-size: 1.3rem;
-  }
+    /* Categorias */
+    .categoria {
+      background: #5f0aff;
+      padding: 15px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: white;
+      font-size: 1.3rem;
+      box-shadow: 0 0 10px #7d3bff;
+      display: block;
+      margin: 15px auto;
+      max-width: 600px;
+    }
 
-  /* FANTASMINHA */
-  .ghost {
-    width: 120px;
-    height: 140px;
-    background: #a64aff;
-    margin: 40px auto;
-    border-radius: 60px 60px 20px 20px;
-    position: relative;
-    box-shadow: 0 0 20px #c084ff;
-  }
+    /* Barra de pesquisa */
+    #search {
+      margin-top: 40px;
+      padding: 12px;
+      width: 80%;
+      max-width: 500px;
+      border-radius: 10px;
+      border: none;
+      font-size: 1.1rem;
+      outline: none;
+    }
 
-  .ghost::before, .ghost::after {
-    content: "";
-    position: absolute;
-    top: 40px;
-    width: 30px;
-    height: 40px;
-    background: #fff;
-    border-radius: 50%;
-  }
-
-  .ghost::before { left: 20px; }
-  .ghost::after { right: 20px; }
-
-  .ghost .pupil {
-    position: absolute;
-    top: 55px;
-    width: 10px;
-    height: 15px;
-    background: #000;
-    border-radius: 50%;
-  }
-
-  .ghost .p1 { left: 30px; }
-  .ghost .p2 { right: 30px; }
-
-  /* LINKS */
-  .link-item {
-    display: block;
-    background: #5f0aff;
-    padding: 15px;
-    text-decoration: none;
-    color: white;
-    margin: 10px auto;
-    border-radius: 12px;
-    font-size: 1.2rem;
-    box-shadow: 0 0 10px #7d3bff;
-    max-width: 600px;
-  }
-
-</style>
+    footer {
+      margin-top: 60px;
+      padding: 20px 0;
+      opacity: 0.6;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- MENU -->
-<div id="menu-btn" onclick="toggleMenu()">☰</div>
+  <header>
+    <h1>Dvzk3</h1>
+    <div class="marca">Todos os direitos reservados © 2025</div>
+  </header>
 
-<nav id="side-menu">
-  <h2>Menu</h2>
-  <a href="admin.html">Login ADM</a>
-</nav>
+  <div class="ghost">
+    <div class="pupil p1"></div>
+    <div class="pupil p2"></div>
+  </div>
 
-<header>
-  <h1>Dvzk3</h1>
-  <div class="marca">Todos os direitos reservados © 2025</div>
-</header>
+  <!-- Barra de pesquisa -->
+  <input type="text" id="search" placeholder="Pesquisar..." onkeyup="searchLinks()">
 
-<!-- FANTASMINHA -->
-<div class="ghost">
-  <div class="pupil p1"></div>
-  <div class="pupil p2"></div>
-</div>
+  <section id="categorias" style="margin-top:40px;">
+    <h2 style="font-size:2rem; margin-bottom:20px;">Categorias</h2>
 
-<!-- LISTA DE LINKS -->
-<section id="links">
-  <h2 style="font-size:2rem;">Links da Web</h2>
-  <p>Carregando...</p>
-</section>
+    <a class="categoria" href="#apps">Apps</a>
+    <a class="categoria" href="#jogos">Jogos</a>
+    <a class="categoria" href="#videos">Vídeos</a>
 
-<footer>
-  Criado por Dvzk3
-</footer>
+  </section>
+
+  <section id="links-prontos" style="margin-top:60px;">
+    <h2 style="font-size:2rem; margin-bottom:20px;">Links Prontos</h2>
+
+    <a class="categoria" href="https://apkpure.com">APKPURE – Baixar APKs</a>
+    <a class="categoria" href="https://www.emulatorgames.net/">ROMs e Emuladores</a>
+    <a class="categoria" href="https://pixeldrain.com/">PixelDrain – Upload rápido</a>
+
+  </section>
+
+  <footer>Criado por Dvzk3</footer>
 
 <script>
-function toggleMenu() {
-  const menu = document.getElementById("side-menu");
-  menu.style.left = menu.style.left === "0px" ? "-250px" : "0px";
-}
+function searchLinks() {
+  const texto = document.getElementById('search').value.toLowerCase();
+  const itens = document.querySelectorAll('.categoria');
 
-/* ===== CARREGAR LINKS DO JSON ===== */
-fetch("links.json")
-  .then(r => r.json())
-  .then(lista => {
-    const area = document.getElementById("links");
-    area.innerHTML = "<h2>Links da Web</h2>";
-
-    lista.forEach(item => {
-      area.innerHTML += `
-        <a class="link-item" href="${item.url}" target="_blank">
-          ${item.nome}
-        </a>
-      `;
-    });
+  itens.forEach(item => {
+    const nome = item.textContent.toLowerCase();
+    item.style.display = nome.includes(texto) ? 'block' : 'none';
   });
+}
 </script>
 
 </body>
