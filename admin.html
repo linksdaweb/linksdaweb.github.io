@@ -1,107 +1,83 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>ADM • Painel</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel ADM – Dvzn愛</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div style="max-width:880px;margin:30px auto;padding:18px;background:linear-gradient(180deg,#0f0016,#09000c);border-radius:12px;box-shadow:0 12px 30px rgba(161,0,255,0.12)">
-  <h2 style="margin:0 0 8px">Painel do Administrador</h2>
-  <p style="margin:0 0 14px;color:#dcd0ff99">Adicionar ou remover links — alterações são salvas no JSONBin</p>
+<h1 style="text-align:center;">Painel ADM</h1>
 
-  <div style="display:flex; gap:10px; flex-wrap:wrap;">
-    <input id="name" placeholder="Nome do link (ex: YouTube)" style="flex:1;min-width:180px;padding:10px;border-radius:8px;border:none;background:#120018;color:#fff">
-    <input id="url" placeholder="URL (https://...)" style="flex:1;min-width:200px;padding:10px;border-radius:8px;border:none;background:#120018;color:#fff">
-    <input id="cat" placeholder="Categoria (ex: Jogos)" style="flex:0.6;min-width:120px;padding:10px;border-radius:8px;border:none;background:#120018;color:#fff">
-    <button onclick="addNew()" style="background:#a100ff;color:#fff;border:none;padding:10px 18px;border-radius:8px;font-weight:700">Adicionar</button>
-  </div>
-
-  <div id="list" style="margin-top:18px"></div>
-
-  <p style="margin-top:18px"><a href="index.html" style="color:#dcd0ff">← Voltar ao site</a></p>
+<div style="padding:20px;">
+    <input id="nome" placeholder="Nome do link"><br><br>
+    <input id="url" placeholder="URL"><br><br>
+    <button onclick="addLink()">Adicionar</button>
 </div>
 
+<h3 style="text-align:center;">Links existentes:</h3>
+<div id="listaADM" class="grid"></div>
+
 <script>
-// CONFIG (já setados)
-const BIN_ID = "6938bf13d0ea881f401e3735";
-const API_KEY = "$2a$10$CAVCHZsnLuFy.mPUgCZp5eUY8rEJ7SY2xLeYifcsTeT7Gbkmrk4YW";
-const BIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
+const BIN_ID = "SEU_BIN_ID_AQUI";
+const API_KEY = "SUA_CHAVE_SECRET_AQUI";
 
-// Le e renderiza lista
-async function renderList(){
-  try{
-    const res = await fetch(BIN_URL, { headers: { "X-Master-Key": API_KEY }});
-    const j = await res.json();
-    const links = (j.record && j.record.links) ? j.record.links : [];
-    const wrap = document.getElementById('list');
-    if(!links.length){ wrap.innerHTML = '<div style="color:#dcd0ff99">Nenhum link ainda.</div>'; return; }
-    wrap.innerHTML = '';
-    links.forEach((l, idx) => {
-      const el = document.createElement('div');
-      el.style = 'background:#0c0014;padding:12px;border-radius:8px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center';
-      el.innerHTML = `<div><strong style="color:#ffd9ff">${escape(l.name)}</strong>
-                      <div style="font-size:13px;color:#e7d9ff99">${escape(l.cat||'')}</div>
-                      <div style="font-size:13px;color:#e7d9ff99">${escape(l.url)}</div></div>
-                      <div style="display:flex;gap:8px">
-                        <button onclick="del(${idx})" style="background:#ff1766;border:none;color:#fff;padding:8px 10px;border-radius:8px">Excluir</button>
-                      </div>`;
-      wrap.appendChild(el);
+let db = [];
+
+async function carregar() {
+    const req = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`, {
+        headers: { "X-Master-Key": API_KEY }
     });
-  }catch(err){
-    console.error(err);
-    document.getElementById('list').innerHTML = '<div style="color:#ffaaaa">Erro ao carregar lista.</div>';
-  }
+
+    const data = await req.json();
+    db = data.record;
+    mostrarLinks();
 }
 
-// escape simples
-function escape(s){ return String(s||'').replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function mostrarLinks() {
+    const div = document.getElementById("listaADM");
+    div.innerHTML = "";
 
-// adicionar link
-async function addNew(){
-  const name = document.getElementById('name').value.trim();
-  const url = document.getElementById('url').value.trim();
-  const cat  = document.getElementById('cat').value.trim();
-  if(!name || !url){ alert('Preencha nome e URL'); return; }
-
-  // pega lista atual
-  const res = await fetch(BIN_URL, { headers: { "X-Master-Key": API_KEY }});
-  const j = await res.json();
-  const list = (j.record && j.record.links) ? j.record.links : [];
-  list.push({ name, url, cat });
-  // salva (PUT)
-  await fetch(BIN_URL, {
-    method: 'PUT',
-    headers: {
-      'Content-Type':'application/json',
-      'X-Master-Key': API_KEY
-    },
-    body: JSON.stringify({ links: list })
-  });
-  // limpa campos e atualiza visual
-  document.getElementById('name').value=''; document.getElementById('url').value=''; document.getElementById('cat').value='';
-  renderList();
+    db.forEach((item, i) => {
+        let card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+            <b>${item.nome}</b><br><br>
+            <button onclick="remover(${i})">Excluir</button>
+        `;
+        div.appendChild(card);
+    });
 }
 
-// excluir por índice
-async function del(i){
-  if(!confirm('Confirmar exclusão?')) return;
-  const res = await fetch(BIN_URL, { headers: { "X-Master-Key": API_KEY }});
-  const j = await res.json();
-  const list = (j.record && j.record.links) ? j.record.links : [];
-  list.splice(i,1);
-  await fetch(BIN_URL, {
-    method:'PUT',
-    headers:{ 'Content-Type':'application/json','X-Master-Key': API_KEY },
-    body: JSON.stringify({ links: list })
-  });
-  renderList();
+async function salvar() {
+    await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "X-Master-Key": API_KEY
+        },
+        body: JSON.stringify(db)
+    });
+    carregar();
 }
 
-// inicializa
-renderList();
+function addLink() {
+    let nome = document.getElementById("nome").value;
+    let url = document.getElementById("url").value;
+
+    if (!nome || !url) return alert("Preencha tudo!");
+
+    db.push({ nome, url });
+    salvar();
+}
+
+function remover(i) {
+    db.splice(i, 1);
+    salvar();
+}
+
+carregar();
 </script>
 
 </body>

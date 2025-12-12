@@ -1,72 +1,96 @@
-/* Geral */
-:root{
-  --bg:#070007;
-  --panel:#100016;
-  --neon:#a100ff;
-  --accent:#5e00a8;
-  --glass: rgba(255,255,255,0.04);
-}
-*{box-sizing:border-box}
-body{
-  margin:0;
-  background:var(--bg);
-  color:#fff;
-  font-family:Inter, Arial, sans-serif;
-  -webkit-font-smoothing:antialiased;
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #07070a;
+    color: #fff;
 }
 
-/* Topbar */
-.topbar{
-  display:flex; align-items:center; justify-content:space-between;
-  padding:14px 16px; background:linear-gradient(180deg,#13001b, #07000e);
-  box-shadow: 0 6px 20px rgba(161,0,255,0.08);
-  position:sticky; top:0; z-index:50;
+header {
+    text-align: center;
+    padding: 40px 20px;
 }
-.left{display:flex; align-items:center; gap:12px}
-.hamb{font-size:22px; background:transparent; color:#fff; border:0; padding:6px; cursor:pointer}
-.brand{display:flex; align-items:center; gap:10px}
-.ghost{font-size:34px; transform:translateY(-2px); filter:drop-shadow(0 6px 12px rgba(161,0,255,0.45))}
-.title{font-weight:700; font-size:18px; letter-spacing:0.6px}
 
-/* Side menu */
-.sidemenu{
-  position:fixed; left:-260px; top:0; width:260px; height:100vh;
-  background:linear-gradient(180deg,#2a003a,#120018); padding:20px; transition:0.25s;
-  box-shadow: 8px 0 30px rgba(0,0,0,0.6);
-  z-index:60;
-  display:flex; flex-direction:column;
+.title {
+    font-size: 2.5em;
+    text-shadow: 0 0 15px #7b2fff;
 }
-.sidemenu .close{background:transparent;border:0;color:#fff; font-size:16px; text-align:left; padding:0; margin-bottom:12px; cursor:pointer}
-.sidemenu a{color:#fff; text-decoration:none; padding:8px 0; font-size:16px}
 
-/* Main */
-.main{padding:18px 14px 80px}
-.hero{text-align:center; margin:8px 0 18px}
-.hero h1{margin:6px 0 4px; font-size:20px}
-.hero .sub{color:#e8d9ff88; margin:0; font-size:13px}
-
-/* Links area */
-.linksArea{display:flex; flex-direction:column; gap:12px; max-width:720px; margin:0 auto}
-.linkCard{
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  padding:12px; border-radius:10px; border:1px solid rgba(161,0,255,0.12);
-  box-shadow: 0 8px 20px rgba(161,0,255,0.04);
-  transition: transform .14s ease, box-shadow .14s;
+.subtitle {
+    opacity: 0.8;
 }
-.linkCard a{display:block; text-decoration:none; color:inherit}
-.linkTitle{font-weight:700; font-size:16px}
-.linkMeta{margin-top:6px; font-size:13px; color:#e8d9ff99}
 
-/* Rodapé */
-.rodape{text-align:center; margin-top:26px; color:#d9c6ff88; font-size:13px}
+/* FANTASMINHA ANIMADO */
+.ghost {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 15px;
+    background: url('https://i.imgur.com/nLpXnGv.png') no-repeat center/cover;
+    filter: drop-shadow(0 0 10px #9d4dff);
+    animation: float 3s ease-in-out infinite;
+}
 
-/* Mobile tweaks */
-@media (max-width:600px){
-  .topbar{padding:12px}
-  .ghost{font-size:44px}
-  .title{font-size:18px}
-  .linkTitle{font-size:17px}
-  .linkCard{padding:14px}
-  .sidemenu{width:84%; left:-100%;}
-  .sidemenu.open{left:0}
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0); }
+}
+
+/* GRID DE LINKS */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 18px;
+    padding: 20px;
+}
+
+.card {
+    padding: 15px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid #7b2fff;
+    border-radius: 15px;
+    text-align: center;
+    transition: .2s;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 12px #a975ff;
+}
+
+/* MENU LATERAL */
+#menuBtn {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 999;
+}
+
+#sideMenu {
+    position: fixed;
+    top: 0;
+    left: -200px;
+    width: 200px;
+    height: 100%;
+    background: #0c0c12;
+    border-right: 2px solid #7b2fff;
+    padding: 80px 20px;
+    transition: .3s;
+}
+
+#sideMenu a {
+    display: block;
+    margin-bottom: 20px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* MOBILE */
+@media (max-width: 500px) {
+    .title { font-size: 1.8em; }
+    .ghost { width: 90px; height: 90px; }
 }
