@@ -1,36 +1,164 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dvzn愛 – Ghost Neon Hub</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dvzk3</title>
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: #2b0040;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    text-align: center;
+  }
+
+  header {
+    padding: 40px 0;
+    position: relative;
+  }
+
+  /* MENU BOTÃO */
+  #menu-btn {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    font-size: 2.4rem;
+    cursor: pointer;
+    z-index: 999;
+    text-shadow: 0 0 10px #c084ff;
+  }
+
+  /* MENU LATERAL */
+  #side-menu {
+    position: fixed;
+    left: -250px;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background: #180027;
+    padding: 20px;
+    box-shadow: 0 0 20px #000;
+    transition: 0.3s;
+    z-index: 998;
+  }
+
+  #side-menu a {
+    display: block;
+    color: white;
+    margin: 20px 0;
+    text-decoration: none;
+    font-size: 1.3rem;
+  }
+
+  /* FANTASMINHA */
+  .ghost {
+    width: 120px;
+    height: 140px;
+    background: #a64aff;
+    margin: 40px auto;
+    border-radius: 60px 60px 20px 20px;
+    position: relative;
+    box-shadow: 0 0 20px #c084ff;
+  }
+
+  .ghost::before, .ghost::after {
+    content: "";
+    position: absolute;
+    top: 40px;
+    width: 30px;
+    height: 40px;
+    background: #fff;
+    border-radius: 50%;
+  }
+
+  .ghost::before { left: 20px; }
+  .ghost::after { right: 20px; }
+
+  .ghost .pupil {
+    position: absolute;
+    top: 55px;
+    width: 10px;
+    height: 15px;
+    background: #000;
+    border-radius: 50%;
+  }
+
+  .ghost .p1 { left: 30px; }
+  .ghost .p2 { right: 30px; }
+
+  /* LINKS */
+  .link-item {
+    display: block;
+    background: #5f0aff;
+    padding: 15px;
+    text-decoration: none;
+    color: white;
+    margin: 10px auto;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    box-shadow: 0 0 10px #7d3bff;
+    max-width: 600px;
+  }
+
+</style>
 </head>
+
 <body>
 
-<!-- MENU LATERAL -->
-<div id="menuBtn">☰</div>
-<div id="sideMenu">
-    <a href="admin.html">⚙️ Painel ADM</a>
-</div>
+<!-- MENU -->
+<div id="menu-btn" onclick="toggleMenu()">☰</div>
 
-<!-- CABEÇALHO -->
+<nav id="side-menu">
+  <h2>Menu</h2>
+  <a href="admin.html">Login ADM</a>
+</nav>
+
 <header>
-    <div class="ghost"></div>
-    <h1 class="title">Dvzn愛 – Ghost Hub</h1>
-    <p class="subtitle">Tudo em um só lugar 👻✨</p>
+  <h1>Dvzk3</h1>
+  <div class="marca">Todos os direitos reservados © 2025</div>
 </header>
 
+<!-- FANTASMINHA -->
+<div class="ghost">
+  <div class="pupil p1"></div>
+  <div class="pupil p2"></div>
+</div>
+
 <!-- LISTA DE LINKS -->
-<section>
-    <h2>Conteúdos</h2>
-    <div id="linkList" class="grid"></div>
+<section id="links">
+  <h2 style="font-size:2rem;">Links da Web</h2>
+  <p>Carregando...</p>
 </section>
 
 <footer>
-    <p>© 2025 Dvzn愛 – Todos os direitos reservados.</p>
+  Criado por Dvzk3
 </footer>
 
-<script src="script.js"></script>
+<script>
+function toggleMenu() {
+  const menu = document.getElementById("side-menu");
+  menu.style.left = menu.style.left === "0px" ? "-250px" : "0px";
+}
+
+/* ===== CARREGAR LINKS DO JSON ===== */
+fetch("links.json")
+  .then(r => r.json())
+  .then(lista => {
+    const area = document.getElementById("links");
+    area.innerHTML = "<h2>Links da Web</h2>";
+
+    lista.forEach(item => {
+      area.innerHTML += `
+        <a class="link-item" href="${item.url}" target="_blank">
+          ${item.nome}
+        </a>
+      `;
+    });
+  });
+</script>
+
 </body>
 </html>

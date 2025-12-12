@@ -3,81 +3,82 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Painel ADM – Dvzn愛</title>
-<link rel="stylesheet" href="style.css">
+<title>Admin Dvzk3</title>
+
+<style>
+  body {
+    background: #1a002b;
+    color: white;
+    font-family: Arial;
+    text-align: center;
+    padding: 30px;
+  }
+
+  input, button {
+    padding: 12px;
+    margin: 10px;
+    width: 80%;
+    border-radius: 10px;
+    border: none;
+    font-size: 1.1rem;
+  }
+
+  button {
+    background: #6a00ff;
+    color: white;
+    box-shadow: 0 0 10px #8b2cff;
+  }
+
+  .box {
+    max-width: 500px;
+    margin: auto;
+    background: #260040;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px #4b0080;
+  }
+
+</style>
 </head>
+
 <body>
 
-<h1 style="text-align:center;">Painel ADM</h1>
+<h1>Painel ADM</h1>
 
-<div style="padding:20px;">
-    <input id="nome" placeholder="Nome do link"><br><br>
-    <input id="url" placeholder="URL"><br><br>
-    <button onclick="addLink()">Adicionar</button>
+<div class="box" id="login-box">
+  <h2>Login</h2>
+
+  <input id="user" placeholder="Usuário">
+  <input id="pass" placeholder="Senha" type="password">
+
+  <button onclick="entrar()">Entrar</button>
 </div>
 
-<h3 style="text-align:center;">Links existentes:</h3>
-<div id="listaADM" class="grid"></div>
+<div class="box" id="painel" style="display:none;">
+  <h2>Adicionar Link</h2>
+
+  <input id="nome" placeholder="Nome do link">
+  <input id="url" placeholder="URL do link">
+
+  <button onclick="salvar()">Salvar</button>
+</div>
 
 <script>
-const BIN_ID = "SEU_BIN_ID_AQUI";
-const API_KEY = "SUA_CHAVE_SECRET_AQUI";
+function entrar() {
+  let u = document.getElementById("user").value;
+  let p = document.getElementById("pass").value;
 
-let db = [];
-
-async function carregar() {
-    const req = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`, {
-        headers: { "X-Master-Key": API_KEY }
-    });
-
-    const data = await req.json();
-    db = data.record;
-    mostrarLinks();
+  if (u === "dvzk3" && p === "0352011ivad") {
+    document.getElementById("login-box").style.display = "none";
+    document.getElementById("painel").style.display = "block";
+  } else {
+    alert("Senha errada!");
+  }
 }
 
-function mostrarLinks() {
-    const div = document.getElementById("listaADM");
-    div.innerHTML = "";
-
-    db.forEach((item, i) => {
-        let card = document.createElement("div");
-        card.className = "card";
-        card.innerHTML = `
-            <b>${item.nome}</b><br><br>
-            <button onclick="remover(${i})">Excluir</button>
-        `;
-        div.appendChild(card);
-    });
+function salvar() {
+  alert("Ainda vou ligar essa função no JSON. Me peça quando quiser!");
 }
-
-async function salvar() {
-    await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-            "X-Master-Key": API_KEY
-        },
-        body: JSON.stringify(db)
-    });
-    carregar();
-}
-
-function addLink() {
-    let nome = document.getElementById("nome").value;
-    let url = document.getElementById("url").value;
-
-    if (!nome || !url) return alert("Preencha tudo!");
-
-    db.push({ nome, url });
-    salvar();
-}
-
-function remover(i) {
-    db.splice(i, 1);
-    salvar();
-}
-
-carregar();
 </script>
 
 </body>
